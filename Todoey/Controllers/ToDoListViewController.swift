@@ -30,11 +30,9 @@ class ToDoListViewController: UITableViewController {
         newItem3.title = "Detsory Demogorgon"
         itemArray.append(newItem3)
         
-        //if let items = defaults.array(forKey: "TodoListArray") as? [String] {
-         //   itemArray = items
-            
-          
-        //}
+        if let items = defaults.array(forKey: "TodoListArray") as? [Item] {
+            itemArray = items
+            }
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -56,7 +54,18 @@ class ToDoListViewController: UITableViewController {
         //Ternary operator ==>
         // value = condition ? valueIfTrue : valueIfFalse
         
+        // this reads as follows
+        //if item.done == true then cell.accessoryType == .checkmark else cell.accessoryType == .none
         cell.accessoryType = item.done ? .checkmark : .none
+        
+        //the line above is the same as the lines below.
+        
+        //if item.done == true {
+        //    cell.accessoryType = .checkmark
+        //} else {
+        //    cell.accessoryType = .none
+        //}
+    
       
         return cell
     }
